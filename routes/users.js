@@ -2,7 +2,9 @@ var router = require('express').Router();
 var usersCtrl = require('../controllers/users');
 
 // GET /users
-router.get('/users', usersCtrl.index);
+router.get('/autofinder', usersCtrl.index);
+
+router.get('/autofinder/profile', usersCtrl.show);
 
 // POST /facts
 // We will already have access to the logged in student on
