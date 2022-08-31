@@ -24,8 +24,7 @@ function index(req, res, next) {
   }
   Car.find(search)
   .then(function (cars) {
-    console.log(cars)
-    res.render('autofinder/index', {user: req.user, cars, search});
+    res.render('ads/index', {title: "Welcome to Autofinder!", user: req.user, cars, search});
   })
 }
 

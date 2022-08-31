@@ -6,7 +6,7 @@ router.get('/', adsCtrl.index);
 
 router.get('/reset', adsCtrl.reset);
 
-router.post('/ads', adsCtrl.show);
+// router.post('/ads', adsCtrl.show);
 
 // POST /facts
 // We will already have access to the logged in student on

@@ -42,8 +42,8 @@ app.use(passport.session());
 
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
-app.use('/autofinder', adsRoutes);
-app.use('/autofinder/users', userRoutes)
+app.use('/ads', adsRoutes);
+app.use('/users', userRoutes)
 
 // invalid request, send 404 page
 app.use(function(req, res) {

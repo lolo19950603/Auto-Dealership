@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var userSchema = new mongoose.Schema(
+var carSchema = new mongoose.Schema(
   {
     year: Number,
     make: String,
@@ -13,4 +13,4 @@ var userSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Car", userSchema);
+module.exports = mongoose.model("Car", carSchema);

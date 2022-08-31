@@ -7,12 +7,11 @@ var adSchema = new mongoose.Schema(
     pictures: Array,
     description: String,
     car: {type: Schema.Types.ObjectId, ref: 'Car'},
-    milege: { type: Number, min: 0},
-    vin: String
+    milege: { type: Number, min: 0}
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Ad", userSchema);
+module.exports = mongoose.model("Ad", adSchema);
