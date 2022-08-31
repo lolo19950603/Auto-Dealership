@@ -27,7 +27,7 @@
           <ul class="nav">
             <% if (user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/autofinder/profile"><span class="material-icons">account_circle</span>Profile</a>
+              <a class="nav-link" href="/autofinder/users/<%= user.googleId %>"><span class="material-icons">account_circle</span>Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/logout"><span class="material-icons">logout</span>Log Out</a>
@@ -44,17 +44,42 @@
 
     <div class="container">
       <div id="search-row" class="row">
-        <form action="/ads" method="GET">
-          <select>
-            <option value="" disabled selected>year</option>
+        <form action="/autofinder" method="GET">
+          <select name="year" onchange="this.form.submit()">
+            <option value="" disabled selected><%= 'year' in search ? search.year : 'year' %></option>
+            <% let duplicateYears = [] %>
+            <% let sortedYears = [] %>
+            <% cars.forEach(car => { %>
+              <% if (!(duplicateYears.includes(car.year))) { %>
+                <% sortedYears.push(car.year) %>
+                <% duplicateYears.push(car.year) %>
+              <% } %>
+            <% }) %> 
+            <% sortedYears.sort().forEach(year => { %>
+              <option value="<%= year %>"><%= year %></option>
+            <% }) %>
           </select>
-          <select>
-            <option value="" disabled selected>make</option>
+          <select name="make" onchange="this.form.submit()">
+            <option value="" disabled selected><%= 'make' in search ? search.make : 'make' %></option>
+            <% let duplicateCars = [] %>
+            <% cars.forEach(car => { %>
+              <% if (!(duplicateCars.includes(car.make))) { %>
+                <option value="<%= car.make %>"><%= car.make %></option>
+                <% duplicateCars.push(car.make) %>
+              <% } %>
+            <% }) %> 
           </select>
-          <select>
-            <option value="" disabled selected>model</option>
+          <select name="model" onchange="this.form.submit()">
+            <option value="" disabled selected><%= 'model' in search ? search.model : 'model' %></option>
+            <% let duplicateModels = [] %>
+            <% cars.forEach(car => { %>
+              <% if (!(duplicateModels.includes(car.model))) { %>
+                <option value="<%= car.model %>"><%= car.model %></option>
+                <% duplicateModels.push(car.model) %>
+              <% } %>
+            <% }) %> 
           </select>
-          <input type="submit" value="Search">
+          <a href="/autofinder/reset">reset</a>
         </form>
       </div>
     </div>

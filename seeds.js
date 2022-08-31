@@ -4,7 +4,6 @@ const fs = require("fs");
 const Car = require("./models/car");
 
 // fs.readFile("./public/cars-database/cars.csv", "utf8", function (err, cars) {
-//   /* parse data */
 //   cars = cars.split("\n");
 //   cars.forEach((car) => {
 //     car.replace("-", "2022");
@@ -20,12 +19,28 @@ const Car = require("./models/car");
 //       }
 //     }
 //     rangeArray.forEach((modelYear) => {
-//       var carObject = new Car({ year: modelYear, make: car[0], model: car[1] });
+//       var carObject = new Car({
+//         year: modelYear,
+//         make: car[0],
+//         model: car[1],
+//       });
 //       carObject.save();
 //     });
 //   });
 // });
 
-Car.find({}).then(function (movies) {
-  console.log(movies);
-});
+// Car.deleteMany({})
+//   .then(function (result) {
+//     console.log(result);
+//   })
+//   .then(function () {
+//     process.exit();
+//   });
+
+// Car.find({ year: { $lt: 1990 - 01 - 01 } })
+//   .then(function (result) {
+//     console.log(result);
+//   })
+//   .then(function () {
+//     process.exit();
+//   });
