@@ -13,8 +13,6 @@ module.exports = {
 function index(req, res, next) {
   if (req.query.year) {
     search.year = req.query.year;
-    delete search.make;
-    delete search.model;
   }
   if (req.query.make) {
     search.make = req.query.make;
