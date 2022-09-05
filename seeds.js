@@ -3,6 +3,7 @@ require("./config/database");
 const fs = require("fs");
 const Car = require("./models/car");
 const Ad = require("./models/ad");
+const User = require("./models/user");
 
 // fs.readFile("./public/cars-database/cars.csv", "utf8", function (err, cars) {
 //   cars = cars.split("\n");
@@ -30,18 +31,18 @@ const Ad = require("./models/ad");
 //   });
 // });
 
-// Ad.deleteMany({})
-//   .then(function (result) {
-//     console.log(result);
-//   })
-//   .then(function () {
-//     process.exit();
-//   });
-
-Ad.find({})
+User.deleteMany({})
   .then(function (result) {
     console.log(result);
   })
   .then(function () {
     process.exit();
   });
+
+// Ad.find({})
+//   .then(function (result) {
+//     console.log(result);
+//   })
+//   .then(function () {
+//     process.exit();
+//   });

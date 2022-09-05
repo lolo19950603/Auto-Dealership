@@ -4,6 +4,8 @@ var usersCtrl = require('../controllers/users');
 // GET /users
 router.post('/:id', usersCtrl.create);
 
+router.get('/:id/new/back', usersCtrl.back);
+
 router.get('/:id/new/resetpictures', usersCtrl.resetPictures);
 
 router.get('/:id/new/resetmodel', usersCtrl.resetModel);

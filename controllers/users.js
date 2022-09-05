@@ -8,6 +8,7 @@ module.exports = {
   show,
   new: newAd,
   create,
+  back,
   resetPictures,
   resetModel
 };
@@ -16,6 +17,7 @@ function show(req, res, next) {
   const p1 = Ad.find({_id: req.params.id});
   const p2 = User.findOne({_id: req.params.id});
   User.findOne({_id: req.params.id}).then(function(result) {
+    console.log(result);
     res.render('users/show', { title: "Profile Page", user: result});
   });
 }
@@ -41,15 +43,19 @@ function newAd(req, res, next) {
   })
 }
 
+function back(req, res, next) {
+  pictures = [];
+  search = {};
+  res.redirect('/users/' + req.params.id);
+}
+
 function resetPictures(req, res, next) {
   pictures = [];
-  console.log('/users/' + req.params.id + '/new');
   res.redirect('/users/' + req.params.id + '/new');
 }
 
 function resetModel(req, res, next) {
   search = {};
-  console.log('/users/' + req.params.id + '/new');
   res.redirect('/users/' + req.params.id + '/new');
 }
 
@@ -64,6 +70,16 @@ function create(req, res) {
       user: req.params.id
     });
     newAd.save();
+    return Promise.all([
+      User.findOne({_id: req.params.id}),
+      newAd
+    ]);
+  })
+  .then(function(result) {
+    const user = result[0];
+    const newAdId = result[1]._id;
+    user.personalAds.push(newAdId);
+    user.save();
     res.redirect('/users/' + req.params.id);
   });
 }
