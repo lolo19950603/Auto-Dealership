@@ -10,7 +10,6 @@ module.exports = {
 };
 
 function index(req, res, next) {
-  console.log(req.user);
   if (req.query.year) {
     search.year = req.query.year;
   }
@@ -29,8 +28,10 @@ function index(req, res, next) {
 }
 
 function show(req, res, next) {
-  console.log(req.body);
-  // res.render('autofinder/show', { user: req.user});
+  Ad.findOne({_id: req.params.id})
+  .then(function(ad) {
+    res.render('ads/show', { title: ad.title, user: req.user, ad});
+  });
 }
 
 function reset(req, res, next) {

@@ -48,9 +48,7 @@
         <img src="<%= ad.pictures[0] %>" width="200"><br>
         $<%= ad.price; %><br>
         <%= ad.milege; %>km<br>
-        <% if (user) { %>
-          <a href="/">add to favorite</a><br>
-        <% } %>
+        <a href="/ads/<%= ad._id %>">view</a><br>
       <% })%>
     </div>
 

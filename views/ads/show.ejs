@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<% ad.pictures.forEach(pic => { %>
+    <img src="<%= pic %>" width="200">
+<% }) %>
+<%= ad.milege; %>km
+$<%= ad.price; %>
+<br><br><label><h6>Seller Infomation:</h6></label>
+<br>name: <%= ad.contact.name; %>
+<br>phone: <%= ad.contact.phone; %>
+<br>area: <%= ad.contact.postal; %>
+<% if (user) { %>
+    <br><br><a href="/">add to favorite</a>
+<% }; %>
+<%- include('../partials/footer') %>

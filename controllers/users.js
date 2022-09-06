@@ -75,12 +75,11 @@ function create(req, res) {
       description: req.body.description,
       price: req.body.price,
       milege: req.body.milege,
-      car: car._id,
       user: req.user._id,
       contact: {
-        contactName: req.body.name,
-        contactNumber: req.body.phone,
-        contactPostal: req.body.postal
+        name: req.body.name,
+        phone: req.body.phone,
+        postal: req.body.postal
       }
     });
     newAd.save();
@@ -108,10 +107,14 @@ function modifyPage(req, res, next) {
 function modify(req, res, next) {
   Ad.findOne({_id : req.params.id})
   .then(function(ad) {
-    ad.pictures = pictures;
     ad.milege = req.body.milege;
     ad.price = req.body.price;
     ad.description = req.body.description;
+    ad.contact = {
+      name: req.body.name,
+      phone: req.body.phone,
+      postal: req.body.postal
+    };
     ad.save();
     pictures = [];
     res.redirect('/profile')

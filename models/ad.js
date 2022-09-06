@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 var contactSchema = new mongoose.Schema(
   {
-    contactName: String,
-    contactNumber: String,
-    contactPostal: String
+    name: String,
+    phone: String,
+    postal: String
   },
   {
     timestamps: true,

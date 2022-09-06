@@ -6,7 +6,7 @@ router.get('/', adsCtrl.index);
 
 router.get('/reset', adsCtrl.reset);
 
-// router.post('/ads', adsCtrl.show);
+router.get('/:id', adsCtrl.show);
 
 
 
