@@ -42,14 +42,8 @@
     <main>
       <a href="/profile/new/back">Back</a>
       <h1><%= title %></h1>
-<form action="/profile/<%= ad._id %>/modify" method="GET">
-  <label>Pictures:</label>
-  <br><input type="text" name="picture" placeholder="enter url">
-  <input type="submit" value="add">
-  <a href="/profile/<%= ad._id %>/modify/resetpictures">reset</a>
-</form>
 
-<% pictures.forEach(picture => { %>
+<% ad.pictures.forEach(picture => { %>
   <img src="<%= picture %>" width="200">
 <% }) %>
 

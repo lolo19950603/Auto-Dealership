@@ -19,9 +19,11 @@ function index(req, res, next) {
   if (req.query.model) {
     search.model = req.query.model;
   }
-  Car.find(search)
-  .then(function (cars) {
-    res.render('ads/index', {title: "Welcome to Autofinder!", user: req.user, cars, search});
+  const p1 = Car.find(search);
+  const p2 = Ad.find(search);
+  Promise.all([p1, p2])
+  .then(function(results) {
+    res.render('ads/index', {title: "Welcome to Autofinder!", user: req.user, cars: results[0], ads: results[1], search});
   })
 }
 

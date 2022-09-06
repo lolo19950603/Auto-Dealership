@@ -68,6 +68,9 @@ function create(req, res) {
   Car.findOne(search).then(function(car) {
     var newAd = new Ad({
       title: search.year + ' ' + search.make + ' ' + search.model,
+      year: search.year,
+      make: search.make,
+      model: search.model,
       pictures: pictures,
       description: req.body.description,
       price: req.body.price,
@@ -98,10 +101,7 @@ function deleteAd(req, res, next) {
 function modifyPage(req, res, next) {
   Ad.findOne({_id : req.params.id})
   .then(function(ad) {
-    if (req.query.picture) {
-      pictures.push(req.query.picture);
-    };
-    res.render('profile/modify', { title: Ad.title, user: req.user, ad, pictures});
+    res.render('profile/modify', { title: ad.title, user: req.user, ad});
   });
 }
 

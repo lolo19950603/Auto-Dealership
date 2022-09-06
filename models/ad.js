@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 var adSchema = new mongoose.Schema(
   {
     title: String,
+    year: { type: Number, min: 0},
+    make: String,
+    model: String,
     pictures: Array,
     description: String,
     price: { type: Number, min: 0},
