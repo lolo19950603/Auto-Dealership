@@ -10,6 +10,7 @@ module.exports = {
 };
 
 function index(req, res, next) {
+  console.log(req.user);
   if (req.query.year) {
     search.year = req.query.year;
   }

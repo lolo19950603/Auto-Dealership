@@ -5,8 +5,7 @@ var carSchema = new mongoose.Schema(
   {
     year: Number,
     make: String,
-    model: String,
-    ads: [{type: Schema.Types.ObjectId, ref: 'Ad'}]
+    model: String
   },
   {
     timestamps: true,

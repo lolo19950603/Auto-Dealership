@@ -1,6 +1,17 @@
 var mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+var contactSchema = new mongoose.Schema(
+  {
+    contactName: String,
+    contactNumber: String,
+    contactPostal: String
+  },
+  {
+    timestamps: true,
+  }
+);
+
 var adSchema = new mongoose.Schema(
   {
     title: String,
@@ -11,8 +22,9 @@ var adSchema = new mongoose.Schema(
     description: String,
     price: { type: Number, min: 0},
     milege: { type: Number, min: 0},
-    car: {type: Schema.Types.ObjectId, ref: 'Car'},
-    user: {type: Schema.Types.ObjectId, ref: 'User'}
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    likedBy: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    contact: contactSchema
   },
   {
     timestamps: true,

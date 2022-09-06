@@ -76,11 +76,15 @@ function create(req, res) {
       price: req.body.price,
       milege: req.body.milege,
       car: car._id,
-      user: req.user._id
+      user: req.user._id,
+      contact: {
+        contactName: req.body.name,
+        contactNumber: req.body.phone,
+        contactPostal: req.body.postal
+      }
     });
     newAd.save();
-    req.user.personalAds.push(newAd._id);
-    req.user.save();
+    console.log(newAd);
     pictures = [];
     search = {};
     res.redirect('/profile');
@@ -90,10 +94,6 @@ function create(req, res) {
 function deleteAd(req, res, next) {
   Ad.deleteOne({_id: req.params.id})
   .then(function() {
-    var deleteLocation = req.user.personalAds.indexOf(req.params.id);
-    req.user.personalAds.splice(deleteLocation, 1);
-    req.user.save();
-    console.log(req.user.personalAds);
     res.redirect('/profile');
   })
 }

@@ -31,7 +31,7 @@ const User = require("./models/user");
 //   });
 // });
 
-User.deleteMany({})
+Ad.deleteMany({})
   .then(function (result) {
     console.log(result);
   })

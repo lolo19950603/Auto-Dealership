@@ -1,12 +1,11 @@
 var mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Ad = require("../models/ad");
 
 var userSchema = new mongoose.Schema(
   {
     name: String,
     email: String,
-    personalAds: [{type: Schema.Types.ObjectId, ref: 'Ad'}],
-    favList: [{type: Schema.Types.ObjectId, ref: 'Ad'}],
     googleId: String,
   },
   {
