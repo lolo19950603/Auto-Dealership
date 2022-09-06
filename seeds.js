@@ -39,7 +39,7 @@ User.deleteMany({})
     process.exit();
   });
 
-// Ad.find({})
+// User.find({})
 //   .then(function (result) {
 //     console.log(result);
 //   })

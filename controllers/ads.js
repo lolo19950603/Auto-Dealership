@@ -1,13 +1,12 @@
 // const User = require('../models/user');
 const Car = require("../models/car");
+const Ad = require("../models/ad");
 let search = {};
 
 module.exports = {
   index,
   show,
-  reset,
-  addFact,
-  delFact
+  reset
 };
 
 function index(req, res, next) {
@@ -34,15 +33,4 @@ function show(req, res, next) {
 function reset(req, res, next) {
   search = {};
   res.redirect('/');
-}
-
-function addFact(req, res, next) {
-  req.user.facts.push(req.body);
-  req.user.save(function(err) {
-    res.redirect('/users');
-  });
-}
-
-function delFact(req, res, next) {
-
 }

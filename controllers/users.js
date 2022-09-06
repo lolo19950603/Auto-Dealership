@@ -5,20 +5,22 @@ let search = {};
 let pictures = [];
 
 module.exports = {
-  show,
+  index,
   new: newAd,
   create,
   back,
   resetPictures,
-  resetModel
+  resetModifyPic,
+  resetModel,
+  deleteAd,
+  modifyPage,
+  modify
 };
 
-function show(req, res, next) {
-  const p1 = Ad.find({_id: req.params.id});
-  const p2 = User.findOne({_id: req.params.id});
-  User.findOne({_id: req.params.id}).then(function(result) {
-    console.log(result);
-    res.render('users/show', { title: "Profile Page", user: result});
+function index(req, res, next) {
+  Ad.find({user: req.user._id})
+  .then(function(results) {
+    res.render('profile/index', {  title: "Profile Page", user: req.user, ads: results});
   });
 }
 
@@ -35,28 +37,31 @@ function newAd(req, res, next) {
   if (req.query.model) {
     search.model = req.query.model;
   }
-  const p1 = Car.find(search);
-  const p2 = User.findOne({_id: req.params.id});
-  Promise.all([p1, p2])
+  Car.find(search)
   .then(function(results) {
-    res.render('users/new', { title: "Create Ad", user: results[1], cars: results[0], search, pictures});
-  })
+    res.render('profile/new', { title: "Create Ad", user: req.user, cars: results, search, pictures});
+  });
 }
 
 function back(req, res, next) {
   pictures = [];
   search = {};
-  res.redirect('/users/' + req.params.id);
+  res.redirect('/profile');
 }
 
 function resetPictures(req, res, next) {
   pictures = [];
-  res.redirect('/users/' + req.params.id + '/new');
+  res.redirect('/profile/new');
+}
+
+function resetModifyPic(req, res, next) {
+  pictures = [];
+  res.redirect('/profile/' + req.params.id + '/modify');
 }
 
 function resetModel(req, res, next) {
   search = {};
-  res.redirect('/users/' + req.params.id + '/new');
+  res.redirect('/profile/new');
 }
 
 function create(req, res) {
@@ -65,21 +70,50 @@ function create(req, res) {
       title: search.year + ' ' + search.make + ' ' + search.model,
       pictures: pictures,
       description: req.body.description,
+      price: req.body.price,
       milege: req.body.milege,
       car: car._id,
-      user: req.params.id
+      user: req.user._id
     });
     newAd.save();
-    return Promise.all([
-      User.findOne({_id: req.params.id}),
-      newAd
-    ]);
+    req.user.personalAds.push(newAd._id);
+    req.user.save();
+    pictures = [];
+    search = {};
+    res.redirect('/profile');
+  });
+}
+
+function deleteAd(req, res, next) {
+  Ad.deleteOne({_id: req.params.id})
+  .then(function() {
+    var deleteLocation = req.user.personalAds.indexOf(req.params.id);
+    req.user.personalAds.splice(deleteLocation, 1);
+    req.user.save();
+    console.log(req.user.personalAds);
+    res.redirect('/profile');
   })
-  .then(function(result) {
-    const user = result[0];
-    const newAdId = result[1]._id;
-    user.personalAds.push(newAdId);
-    user.save();
-    res.redirect('/users/' + req.params.id);
+}
+
+function modifyPage(req, res, next) {
+  Ad.findOne({_id : req.params.id})
+  .then(function(ad) {
+    if (req.query.picture) {
+      pictures.push(req.query.picture);
+    };
+    res.render('profile/modify', { title: Ad.title, user: req.user, ad, pictures});
+  });
+}
+
+function modify(req, res, next) {
+  Ad.findOne({_id : req.params.id})
+  .then(function(ad) {
+    ad.pictures = pictures;
+    ad.milege = req.body.milege;
+    ad.price = req.body.price;
+    ad.description = req.body.description;
+    ad.save();
+    pictures = [];
+    res.redirect('/profile')
   });
 }

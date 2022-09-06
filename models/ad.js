@@ -6,6 +6,7 @@ var adSchema = new mongoose.Schema(
     title: String,
     pictures: Array,
     description: String,
+    price: { type: Number, min: 0},
     milege: { type: Number, min: 0},
     car: {type: Schema.Types.ObjectId, ref: 'Car'},
     user: {type: Schema.Types.ObjectId, ref: 'User'}

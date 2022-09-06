@@ -27,11 +27,11 @@
           <ul class="nav">
             <% if (user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/users/<%= user._id %>/new/back"><span class="material-icons">account_circle</span>Profile</a>
+              <a class="nav-link" href="/profile/new/back"><span class="material-icons">account_circle</span>Profile</a>
             </li>
             <% } else { %>
             <li class="nav-item">
-              <a class="nav-link" href="/auth/google"><span class="material-icons">login</span>Login with Google</a>
+              <a class="nav-link" href="/auth/google"><span class="material-icons">login</span>Sign in with Google</a>
             </li>
             <% } %>
           </ul>
@@ -42,19 +42,19 @@
     <main>
       <h1><%= title %></h1>
 
-<a href="/users/<%= user._id %>/new/back">Back</a>
-<form action="/users/<%= user._id %>/new" method="GET">
+<a href="/profile/new/back">Back</a>
+<form action="/profile/new" method="GET">
   <label>Pictures:</label>
   <br><input type="text" name="picture" placeholder="enter url">
   <input type="submit" value="add">
-  <a href="/users/<%= user._id %>/new/resetpictures">reset</a>
+  <a href="/profile/new/resetpictures">reset</a>
 </form>
 
 <% pictures.forEach(picture => { %>
   <img src="<%= picture %>" width="200">
 <% }) %>
 
-<form action="/users/<%= user._id %>/new" method="GET">
+<form action="/profile/new" method="GET">
   <% if (!('year' in search)) { %>
     <label>Select Model:</label>
     <select name="year" onchange="this.form.submit()">
@@ -71,7 +71,7 @@
         <option value="<%= year %>"><%= year %></option>
       <% }) %>
     </select>
-    <a href="/users/<%= user._id %>/new/resetmodel">reset</a>
+    <a href="/profile/resetmodel">reset</a>
   <% }%>
   <% if ('year' in search && !('make' in search)) { %>
     <label>Select Model:</label>
@@ -88,7 +88,7 @@
         <% } %>
       <% }) %> 
     </select>
-    <a href="/users/<%= user._id %>/new/resetmodel">reset</a>
+    <a href="/profile/new/resetmodel">reset</a>
   <% } %>
   <% if ('year' in search && 'make' in search) { %>
     <label>Select Model:</label>
@@ -108,13 +108,13 @@
         <% } %>
       <% }) %> 
     </select>
-    <a href="/users/<%= user._id %>/new/resetmodel">reset</a>
+    <a href="/profile/new/resetmodel">reset</a>
   <% } %>
 </form>
 
-<form action="/users/<%= user._id %>" method="POST">
+<form action="/profile" method="POST">
   <label>Enter Mileage:</label>
-  <input type="number" name="seat" required="required"> KM
+  <input type="number" name="milege" required="required"> KM
   <br><label>Enter Selling Price: $</label>
   <input type="number" name="price" required="required">
   <br><label>Description:</label>

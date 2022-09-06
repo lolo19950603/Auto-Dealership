@@ -27,11 +27,11 @@
           <ul class="nav">
             <% if (user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/users/<%= user._id %>"><span class="material-icons">account_circle</span>Profile</a>
+              <a class="nav-link" href="/profile"><span class="material-icons">account_circle</span>Profile</a>
             </li>
             <% } else { %>
             <li class="nav-item">
-              <a class="nav-link" href="/auth/google"><span class="material-icons">login</span>Login with Google</a>
+              <a class="nav-link" href="/auth/google"><span class="material-icons">login</span>Sign in with Google</a>
             </li>
             <% } %>
           </ul>
@@ -45,7 +45,7 @@
       <div>
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="/users/<%=user._id%>/new"><span class="material-icons">add</span>Create Ad</a>
+            <a class="nav-link" href="/profile/new"><span class="material-icons">add</span>Create Ad</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/broken"><span class="material-icons">favorite</span>Favorite Ads</a>
@@ -60,5 +60,17 @@
   <h2>welcome! <%= user.name %>.</h2>
 <div>
     <h3>current ads:</h3>
+    <% ads.forEach(ad => { %>
+        <div class="ad">
+            <% ad.pictures.forEach(pic => { %>
+                <img src="<%= pic %>" width="200">
+            <% }) %>
+            <%= ad.title; %>
+            <%= ad.milege; %>km
+            $<%= ad.price; %>
+            <br><a href="/profile/<%= ad._id %>/modify">modify</a>
+            <a href="/profile/<%= ad._id %>/delete">delete</a>
+        </div>
+    <% }) %>
 </div>
 <%- include('../partials/footer') %>

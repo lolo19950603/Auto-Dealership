@@ -27,7 +27,7 @@
           <ul class="nav">
             <% if (user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/profile"><span class="material-icons">account_circle</span>Profile</a>
+              <a class="nav-link" href="/profile/new/back"><span class="material-icons">account_circle</span>Profile</a>
             </li>
             <% } else { %>
             <li class="nav-item">
@@ -40,4 +40,27 @@
     </nav>
 
     <main>
+      <a href="/profile/new/back">Back</a>
       <h1><%= title %></h1>
+<form action="/profile/<%= ad._id %>/modify" method="GET">
+  <label>Pictures:</label>
+  <br><input type="text" name="picture" placeholder="enter url">
+  <input type="submit" value="add">
+  <a href="/profile/<%= ad._id %>/modify/resetpictures">reset</a>
+</form>
+
+<% pictures.forEach(picture => { %>
+  <img src="<%= picture %>" width="200">
+<% }) %>
+
+<form action="/profile/<%= ad._id %>" method="POST">
+  <label>Enter Mileage:</label>
+  <input type="number" name="milege" required="required" value="<%= ad.milege %>"> KM
+  <br><label>Enter Selling Price: $</label>
+  <input type="number" name="price" required="required" value="<%= ad.price %>">
+  <br><label>Description:</label>
+  <br><textarea name="description" required="required"><%= ad.description %></textarea>
+  <br><input type="submit" value="Modify">
+</form>
+ 
+<%- include('../partials/footer') %>
