@@ -22,7 +22,4 @@ router.get('/:id/modify', usersCtrl.modifyPage);
 
 router.post('/:id', usersCtrl.modify);
 
-router.get('/:id/modify/resetpictures', usersCtrl.resetModifyPic);
-
-
 module.exports = router;

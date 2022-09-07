@@ -61,12 +61,10 @@
     <h3>Favorite:</h3>
     <% favAds.forEach(ad => { %>
         <div class="ad">
-            <% ad.pictures.forEach(pic => { %>
-                <img src="<%= pic %>" width="200">
-            <% }) %>
-            <%= ad.title; %>
-            <%= ad.milege; %>km
-            $<%= ad.price; %>
+            <img src="<%= ad.pictures[0] %>" width="200">
+            <br><%= ad.title; %>
+            <br><%= ad.milege; %>km
+            <br>$<%= ad.price; %>
             <br><a href="/ads/<%= ad._id %>"><span class="material-icons">directions_car</span>view</a>
              <a href="/ads/<%= ad._id %>/remove"><span class="material-icons">heart_broken</span>remove</a>
         </div>

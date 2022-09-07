@@ -49,55 +49,59 @@
       >
       <h1><%= title %></h1>
 
-      <% ad.pictures.forEach(picture => { %>
-      <img src="<%= picture %>" width="200" />
-      <% }) %>
-
       <form action="/profile/<%= ad._id %>" method="POST">
-        <label>Enter Mileage:</label>
-        <input
+        <label>Pictures(maximum 5):</label>
+        <br><input type="text" name="picture1" placeholder="enter url">
+        <br><input type="text" name="picture2" placeholder="enter url">
+        <br><input type="text" name="picture3" placeholder="enter url">
+        <br><input type="text" name="picture4" placeholder="enter url">
+        <br><input type="text" name="picture5" placeholder="enter url">
+        <br><br><label>Enter Mileage:</label>
+        <br><input
           type="number"
           name="milege"
           required="required"
           value="<%= ad.milege %>"
         />
-        KM <br /><label>Enter Selling Price: $</label>
-        <input
+        km 
+        <br><br><label>Enter Selling Price:</label>
+        <br>$<input
           type="number"
           name="price"
           required="required"
           value="<%= ad.price %>"
         />
-        <br /><label>Description:</label> <br /><textarea
+        <br><br><label>Description:</label>
+        <br><textarea
           name="description"
           required="required"
         >
 <%= ad.description %></textarea
         >
-        <br /><br /><label><h6>Contact Information:</h6></label> <br /><label
+        <br><br><label><h6>Contact Information:</h6></label> <br /><label
           >Name:</label
         >
-        <input
+        <br><input
           type="text"
           name="name"
           required="required"
           value="<%= ad.contact.name %>"
         />
-        <br /><label>Phone Number:</label>
-        <input
+        <br><br><label>Phone Number:</label>
+        <br><input
           type="text"
           name="phone"
           required="required"
           value="<%= ad.contact.phone %>"
         />
-        <br /><label>Postal Code:</label>
-        <input
+        <br><br><label>Postal Code:</label>
+        <br><input
           type="text"
           name="postal"
           required="required"
           value="<%= ad.contact.postal %>"
         />
-        <br /><br /><input type="submit" value="Modify" />
+        <br><br><input type="submit" value="Modify" />
       </form>
 
       <%- include('../partials/footer') %>

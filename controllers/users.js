@@ -2,7 +2,6 @@ const User = require("../models/user");
 const Car = require("../models/car");
 const Ad = require("../models/ad");
 let search = {};
-let pictures = [];
 
 module.exports = {
   index,
@@ -27,9 +26,6 @@ function index(req, res, next) {
 }
 
 function newAd(req, res, next) {
-  if (req.query.picture) {
-    pictures.push(req.query.picture)
-  }
   if (req.query.year) {
     search.year = req.query.year;
   }
@@ -41,12 +37,11 @@ function newAd(req, res, next) {
   }
   Car.find(search)
   .then(function(results) {
-    res.render('profile/new', { title: "Create Ad", user: req.user, cars: results, search, pictures});
+    res.render('profile/new', { title: "Create Ad", user: req.user, cars: results, search});
   });
 }
 
 function back(req, res, next) {
-  pictures = [];
   search = {};
   res.redirect('/profile');
 }
@@ -68,6 +63,23 @@ function resetModel(req, res, next) {
 
 function create(req, res) {
   Car.findOne(search).then(function(car) {
+    let pictures = []
+    if (req.body.picture1) {
+      pictures.push(req.body.picture1);
+    }
+    if (req.body.picture2) {
+      pictures.push(req.body.picture2);
+    }
+    if (req.body.picture3) {
+      pictures.push(req.body.picture3);
+    }
+    if (req.body.picture4) {
+      pictures.push(req.body.picture4);
+    }
+    if (req.body.picture5) {
+      pictures.push(req.body.picture5);
+    }
+    console.log(pictures);
     var newAd = new Ad({
       title: search.year + ' ' + search.make + ' ' + search.model,
       year: search.year,
@@ -86,7 +98,6 @@ function create(req, res) {
     });
     newAd.save();
     console.log(newAd);
-    pictures = [];
     search = {};
     res.redirect('/profile');
   });
@@ -109,6 +120,24 @@ function modifyPage(req, res, next) {
 function modify(req, res, next) {
   Ad.findOne({_id : req.params.id})
   .then(function(ad) {
+    let pictures = []
+    if (req.body.picture1) {
+      pictures.push(req.body.picture1);
+    }
+    if (req.body.picture2) {
+      pictures.push(req.body.picture2);
+    }
+    if (req.body.picture3) {
+      pictures.push(req.body.picture3);
+    }
+    if (req.body.picture4) {
+      pictures.push(req.body.picture4);
+    }
+    if (req.body.picture5) {
+      pictures.push(req.body.picture5);
+    }
+    console.log(pictures);
+    ad.pictures = pictures;
     ad.milege = req.body.milege;
     ad.price = req.body.price;
     ad.description = req.body.description;
@@ -118,7 +147,6 @@ function modify(req, res, next) {
       postal: req.body.postal
     };
     ad.save();
-    pictures = [];
     res.redirect('/profile')
   });
 }

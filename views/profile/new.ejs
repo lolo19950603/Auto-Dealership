@@ -42,17 +42,6 @@
     <main>
       <a href="/profile/new/back"><span class="material-icons">arrow_back</span>back to profile page</a>
       <h1><%= title %></h1>
-      
-<form action="/profile/new" method="GET">
-  <label>Pictures:</label>
-  <br><input type="text" name="picture" placeholder="enter url">
-  <input type="submit" value="add">
-  <a href="/profile/new/resetpictures"><span class="material-icons">restart_alt</span>reset</a>
-</form>
-
-<% pictures.forEach(picture => { %>
-  <img src="<%= picture %>" width="200">
-<% }) %>
 
 <form action="/profile/new" method="GET">
   <% if (!('year' in search)) { %>
@@ -71,7 +60,8 @@
         <option value="<%= year %>"><%= year %></option>
       <% }) %>
     </select>
-    <a href="/profile/resetmodel"><span class="material-icons">restart_alt</span>reset</a>
+    <a href="/profile/new/resetmodel"><span class="material-icons">restart_alt</span>reset</a>
+  </form>
   <% }%>
   <% if ('year' in search && !('make' in search)) { %>
     <label>Select Model:</label>
@@ -88,9 +78,10 @@
         <% } %>
       <% }) %> 
     </select>
-    <a href="/profile/new/resetmodel">reset</a>
+    <a href="/profile/new/resetmodel"><span class="material-icons">restart_alt</span>reset</a>
+  </form>
   <% } %>
-  <% if ('year' in search && 'make' in search) { %>
+  <% if ('year' in search && 'make' in search && !('model' in search)) { %>
     <label>Select Model:</label>
     <select name="year" onchange="this.form.submit()">
       <option value="" disabled selected><%= 'year' in search ? search.year : 'year' %></option>
@@ -108,25 +99,45 @@
         <% } %>
       <% }) %> 
     </select>
-    <a href="/profile/new/resetmodel">reset</a>
+    <a href="/profile/new/resetmodel"><span class="material-icons">restart_alt</span>reset</a>
+  </form>
   <% } %>
-</form>
+  <% if ('year' in search && 'make' in search && 'model' in search) { %>
+    <label>Select Model:</label>
+    <select name="year" onchange="this.form.submit()">
+      <option value="" disabled selected><%= 'year' in search ? search.year : 'year' %></option>
+    </select>
+    <select name="make" onchange="this.form.submit()">
+      <option value="" disabled selected><%= 'make' in search ? search.make : 'make' %></option>
+    </select>
+    <select name="model" onchange="this.form.submit()">
+      <option value="" disabled selected><%= 'model' in search ? search.model : 'model' %></option>
+    </select>
+    <a href="/profile/new/resetmodel"><span class="material-icons">restart_alt</span>reset</a>
+  </form>
+  <form action="/profile" method="POST">
+    <br><label>Pictures(maximum 5):</label>
+    <br><input type="text" name="picture1" placeholder="enter url">
+    <br><input type="text" name="picture2" placeholder="enter url">
+    <br><input type="text" name="picture3" placeholder="enter url">
+    <br><input type="text" name="picture4" placeholder="enter url">
+    <br><input type="text" name="picture5" placeholder="enter url">
+    <br><br><label>Enter Mileage:</label>
+    <br><input type="number" name="milege" required="required"> km
+    <br><br><label>Enter Selling Price:</label>
+    <br>$<input type="number" name="price" required="required">
+    <br><br><label>Description:</label>
+    <br><textarea name="description" required="required"></textarea>
+    <br><br><label><h6>Contact Information:</h6></label>
+    <br><br><label>Name:</label>
+    <br><input type="text" name="name" required="required">
+    <br><br><label>Phone Number:</label>
+    <br><input type="text" name="phone" required="required">
+    <br><br><label>Postal Code:</label>
+    <br><input type="text" name="postal" required="required">
+    <br><br><input type="submit" value="Create">
+  </form>
+  <% } %>
 
-<form action="/profile" method="POST">
-  <label>Enter Mileage:</label>
-  <input type="number" name="milege" required="required"> KM
-  <br><label>Enter Selling Price: $</label>
-  <input type="number" name="price" required="required">
-  <br><label>Description:</label>
-  <br><textarea name="description" required="required"></textarea>
-  <br><br><label><h6>Contact Information:</h6></label>
-  <br><label>Name:</label>
-  <input type="text" name="name" required="required">
-  <br><label>Phone Number:</label>
-  <input type="text" name="phone" required="required">
-  <br><label>Postal Code:</label>
-  <input type="text" name="postal" required="required">
-  <br><br><input type="submit" value="Create">
-</form>
  
 <%- include('../partials/footer') %>

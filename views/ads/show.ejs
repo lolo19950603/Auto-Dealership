@@ -1,21 +1,24 @@
 <%- include('../partials/header') %>
 <a href="/"><span class="material-icons">arrow_back</span>back to search</a>
+<% if (user) { %>
+    <% if (ad.savedBy.includes(user._id)) { %>
+        <a href="/profile/favorite"><span class="material-icons">favorite</span>saved</a>
+    <% } else { %>
+        <a href="/ads/<%= ad._id %>/save"><span class="material-icons">favorite</span>Save to favorite</a>
+    <% } %>
+<% }; %>
 <h1><%= title %></h1>
 <% ad.pictures.forEach(pic => { %>
     <img src="<%= pic %>" width="200">
 <% }) %>
-<%= ad.milege; %>km
-$<%= ad.price; %>
+<br><br>milege: <%= ad.milege; %>km
+<br>price: $<%= ad.price; %>
+<br>description:<br>$<%= ad.description; %>
+
 <br><br><label><h6>Seller Infomation:</h6></label>
 <br>name: <%= ad.contact.name; %>
 <br>phone: <%= ad.contact.phone; %>
 <br>area: <%= ad.contact.postal; %>
-<% if (user) { %>
-    <% if (ad.savedBy.includes(user._id)) { %>
-        <br><br>Saved to <a href="/profile/favorite"><span class="material-icons">favorite</span>favorite</a>
-    <% } else { %>
-        <br><br><a href="/ads/<%= ad._id %>/save"><span class="material-icons">favorite</span>Save to favorite</a>
-    <% } %>
-<% }; %>
-<br><br><%= ad.savedBy.length %> people saved this ad.
+
+<br><br><%= ad.savedBy.length %> people saved this ad
 <%- include('../partials/footer') %>
