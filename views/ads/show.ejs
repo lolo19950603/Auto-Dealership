@@ -1,6 +1,8 @@
 <%- include('../partials/header') %>
+<a href="/"> back to search</a>
+<h1><%= title %></h1>
 <% ad.pictures.forEach(pic => { %>
-    <img src="<%= pic %>" width="200">
+    <img src="<%= pic %>" width="150">
 <% }) %>
 <%= ad.milege; %>km
 $<%= ad.price; %>
@@ -9,6 +11,11 @@ $<%= ad.price; %>
 <br>phone: <%= ad.contact.phone; %>
 <br>area: <%= ad.contact.postal; %>
 <% if (user) { %>
-    <br><br><a href="/">add to favorite</a>
+    <% if (ad.savedBy.includes(user._id)) { %>
+        <br><br>Saved to <a href="/profile/favorite">favorite</a>
+    <% } else { %>
+        <br><br><a href="/ads/<%= ad._id %>/save">Save to favorite</a>
+    <% } %>
 <% }; %>
+<br><br><%= ad.savedBy.length %> people saved this ad.
 <%- include('../partials/footer') %>

@@ -6,7 +6,9 @@ let search = {};
 module.exports = {
   index,
   show,
-  reset
+  reset,
+  fav,
+  removeFav
 };
 
 function index(req, res, next) {
@@ -37,4 +39,23 @@ function show(req, res, next) {
 function reset(req, res, next) {
   search = {};
   res.redirect('/');
+}
+
+function fav(req, res, next) {
+  Ad.findOne({_id: req.params.id})
+  .then(function(ad) {
+    ad.savedBy.push(req.user._id);
+    ad.save();
+    res.redirect('/ads/' + req.params.id);
+  })
+}
+
+function removeFav(req, res, next) {
+  Ad.findOne({_id: req.params.id})
+  .then(function(ad) {
+    let removeIndex = ad.savedBy.indexOf(req.user._id);
+    ad.savedBy.splice(removeIndex, 1);
+    ad.save();
+    res.redirect('/profile/favorite');
+  })
 }

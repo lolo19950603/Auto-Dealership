@@ -14,10 +14,12 @@ module.exports = {
   resetModel,
   deleteAd,
   modifyPage,
-  modify
+  modify,
+  favorite
 };
 
 function index(req, res, next) {
+  console.log(req.user);
   Ad.find({user: req.user._id})
   .then(function(results) {
     res.render('profile/index', {  title: "Profile Page", user: req.user, ads: results});
@@ -92,7 +94,7 @@ function create(req, res) {
 
 function deleteAd(req, res, next) {
   Ad.deleteOne({_id: req.params.id})
-  .then(function() {
+  .then(function(result) {
     res.redirect('/profile');
   })
 }
@@ -118,5 +120,12 @@ function modify(req, res, next) {
     ad.save();
     pictures = [];
     res.redirect('/profile')
+  });
+}
+
+function favorite(req, res, next) {
+  Ad.find({ savedBy: req.user._id  })
+  .then(function(results) {
+    res.render('profile/favorite', {  title: "Favorite", user: req.user, favAds: results});
   });
 }

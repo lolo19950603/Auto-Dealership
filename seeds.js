@@ -31,18 +31,18 @@ const User = require("./models/user");
 //   });
 // });
 
-Ad.deleteMany({})
-  .then(function (result) {
-    console.log(result);
-  })
-  .then(function () {
-    process.exit();
-  });
-
-// User.find({})
+// User.deleteMany({})
 //   .then(function (result) {
 //     console.log(result);
 //   })
 //   .then(function () {
 //     process.exit();
 //   });
+
+User.find({})
+  .then(function (result) {
+    console.log(result);
+  })
+  .then(function () {
+    process.exit();
+  });

@@ -48,7 +48,7 @@
             <a class="nav-link" href="/profile/new"><span class="material-icons">add</span>Create Ad</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/broken"><span class="material-icons">favorite</span>Favorite Ads</a>
+            <a class="nav-link" href="/profile/favorite"><span class="material-icons">favorite</span>Favorite Ads</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/logout"><span class="material-icons">logout</span>Log Out</a>
@@ -57,19 +57,18 @@
       </div>
     </div>
   </nav>
-  <h2>welcome! <%= user.name %>.</h2>
+  <h2>welcome! <%= user.name %></h2>
 <div>
     <h3>current ads:</h3>
     <% ads.forEach(ad => { %>
         <div class="ad">
-            <% ad.pictures.forEach(pic => { %>
-                <img src="<%= pic %>" width="200">
-            <% }) %>
+            <img src="<%= ad.pictures[0] %>" width="150">
             <%= ad.title; %>
             <%= ad.milege; %>km
             $<%= ad.price; %>
-            <br><a href="/profile/<%= ad._id %>/modify">modify</a>
-            <a href="/profile/<%= ad._id %>/delete">delete</a>
+            <br><a href="/ads/<%= ad._id %>">view</a>
+             <a href="/profile/<%= ad._id %>/modify">modify</a>
+             <a href="/profile/<%= ad._id %>/delete">delete</a>
         </div>
     <% }) %>
 </div>

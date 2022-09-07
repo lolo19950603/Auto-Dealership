@@ -8,6 +8,10 @@ router.get('/reset', adsCtrl.reset);
 
 router.get('/:id', adsCtrl.show);
 
+router.get('/:id/save', adsCtrl.fav)
+
+router.get('/:id/remove', adsCtrl.removeFav)
+
 
 
 function isLoggedIn(req, res, next) {

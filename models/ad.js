@@ -23,7 +23,7 @@ var adSchema = new mongoose.Schema(
     price: { type: Number, min: 0},
     milege: { type: Number, min: 0},
     user: {type: Schema.Types.ObjectId, ref: 'User'},
-    likedBy: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    savedBy: [{type: Schema.Types.ObjectId, ref: 'User'}],
     contact: contactSchema
   },
   {

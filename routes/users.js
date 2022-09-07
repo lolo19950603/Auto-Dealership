@@ -14,6 +14,8 @@ router.get('/new', usersCtrl.new)
 
 router.get('/', usersCtrl.index);
 
+router.get('/favorite', usersCtrl.favorite);
+
 router.get('/:id/delete', usersCtrl.deleteAd);
 
 router.get('/:id/modify', usersCtrl.modifyPage);

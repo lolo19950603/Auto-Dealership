@@ -40,9 +40,9 @@
     </nav>
 
     <main>
+      <a href="/profile/new/back"> back to profile page</a>
       <h1><%= title %></h1>
-
-<a href="/profile/new/back">Back</a>
+      
 <form action="/profile/new" method="GET">
   <label>Pictures:</label>
   <br><input type="text" name="picture" placeholder="enter url">
@@ -51,7 +51,7 @@
 </form>
 
 <% pictures.forEach(picture => { %>
-  <img src="<%= picture %>" width="200">
+  <img src="<%= picture %>" width="150">
 <% }) %>
 
 <form action="/profile/new" method="GET">

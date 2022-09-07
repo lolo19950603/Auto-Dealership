@@ -40,3 +40,36 @@
     </nav>
 
     <main>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <div>
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/profile/new"><span class="material-icons">add</span>Create Ad</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile/favorite"><span class="material-icons">favorite</span>Favorite Ads</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><span class="material-icons">logout</span>Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div>
+    <h3>Favorite:</h3>
+    <% favAds.forEach(ad => { %>
+        <div class="ad">
+            <% ad.pictures.forEach(pic => { %>
+                <img src="<%= pic %>" width="150">
+            <% }) %>
+            <%= ad.title; %>
+            <%= ad.milege; %>km
+            $<%= ad.price; %>
+            <br><a href="/ads/<%= ad._id %>">view</a>
+             <a href="/ads/<%= ad._id %>/remove">remove</a>
+        </div>
+    <% }) %>
+</div>
+<%- include('../partials/footer') %>
