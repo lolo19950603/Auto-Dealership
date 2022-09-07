@@ -1,16 +1,15 @@
-.brand-logo {
-  margin-left: 15px;
+body {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  background-color: #22272e;
 }
 
-.card .card-content .card-title {
-  margin-bottom: 10px;
+.navbar {
+  background-color: #2d333b;
 }
 
-#search-row form {
-  padding-top: 20px;
-}
-
-.student-name {
-  position: relative;
-  top: -5px;
+.ads {
+  margin: auto;
+  width: 50%;
+  border: 3px solid grey;
+  padding: 10px;
 }

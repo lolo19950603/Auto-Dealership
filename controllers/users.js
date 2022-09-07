@@ -18,7 +18,6 @@ module.exports = {
 };
 
 function index(req, res, next) {
-  console.log(req.user);
   Ad.find({user: req.user._id})
   .then(function(results) {
     res.render('profile/index', {  title: "Profile Page", user: req.user, ads: results});

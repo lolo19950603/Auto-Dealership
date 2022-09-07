@@ -43,7 +43,7 @@
       <a href="/profile/new/back"><span class="material-icons">arrow_back</span>back to profile page</a>
       <h1><%= title %></h1>
 
-<form action="/profile/new" method="GET">
+  <form action="/profile/new" method="GET">
   <% if (!('year' in search)) { %>
     <label>Select Model:</label>
     <select name="year" onchange="this.form.submit()">

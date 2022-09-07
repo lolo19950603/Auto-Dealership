@@ -22,16 +22,22 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a href="/ads" class="navbar-brand"><span class="material-icons">directions_car</span>Autofinder</a>
+        <a href="/ads" class="navbar-brand"
+          ><span class="material-icons">directions_car</span>Autofinder</a
+        >
         <div>
           <ul class="nav">
             <% if (user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/profile"><span class="material-icons">account_circle</span>Profile</a>
+              <a class="nav-link" href="/profile"
+                ><span class="material-icons">account_circle</span>Profile</a
+              >
             </li>
             <% } else { %>
             <li class="nav-item">
-              <a class="nav-link" href="/auth/google"><span class="material-icons">login</span>Sign in with Google</a>
+              <a class="nav-link" href="/auth/google"
+                ><span class="material-icons">login</span>Sign in with Google</a
+              >
             </li>
             <% } %>
           </ul>
@@ -40,34 +46,48 @@
     </nav>
 
     <main>
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <div>
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/profile/new"><span class="material-icons">add</span>Create Ad</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile/favorite"><span class="material-icons">favorite</span>Favorite Ads</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout"><span class="material-icons">logout</span>Log Out</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-<div>
-    <h3>Favorite:</h3>
-    <% favAds.forEach(ad => { %>
-        <div class="ad">
-            <img src="<%= ad.pictures[0] %>" width="200">
-            <br><%= ad.title; %>
-            <br><%= ad.milege; %>km
-            <br>$<%= ad.price; %>
-            <br><a href="/ads/<%= ad._id %>"><span class="material-icons">directions_car</span>view</a>
-             <a href="/ads/<%= ad._id %>/remove"><span class="material-icons">heart_broken</span>remove</a>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <div>
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/profile/new"
+                  ><span class="material-icons">add</span>Create Ad</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/profile/favorite"
+                  ><span class="material-icons">favorite</span>Favorite Ads</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout"
+                  ><span class="material-icons">logout</span>Log Out</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-    <% }) %>
-</div>
-<%- include('../partials/footer') %>
+      </nav>
+      <div>
+        <a href="/profile/new/back"
+          ><span class="material-icons">arrow_back</span>back to profile page</a
+        >
+        <h3>Favorite:</h3>
+        <% favAds.forEach(ad => { %>
+        <div class="ad">
+          <img src="<%= ad.pictures[0] %>" width="200" />
+          <br /><%= ad.title; %> <br /><%= ad.milege; %>km <br />$<%= ad.price;
+          %> <br /><a href="/ads/<%= ad._id %>"
+            ><span class="material-icons">directions_car</span>view</a
+          >
+          <a href="/ads/<%= ad._id %>/remove"
+            ><span class="material-icons">heart_broken</span>remove</a
+          >
+        </div>
+        <% }) %>
+      </div>
+      <%- include('../partials/footer') %>
+    </main>
+  </body>
+</html>

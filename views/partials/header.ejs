@@ -20,18 +20,18 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar">
       <div class="container-fluid">
-        <a href="/ads" class="navbar-brand"><span class="material-icons">directions_car</span>Autofinder</a>
+        <a href="/ads" class="navbar-brand text-light"><span class="material-icons">directions_car</span>Autofinder</a>
         <div>
           <ul class="nav">
             <% if (user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/profile"><span class="material-icons">account_circle</span>Profile</a>
+              <a class="nav-link text-light" href="/profile"><span class="material-icons">account_circle</span>Profile</a>
             </li>
             <% } else { %>
             <li class="nav-item">
-              <a class="nav-link" href="/auth/google"><span class="material-icons">login</span>Sign in with Google</a>
+              <a class="nav-link text-light" href="/auth/google"><span class="material-icons">login</span>Sign in with Google</a>
             </li>
             <% } %>
           </ul>
