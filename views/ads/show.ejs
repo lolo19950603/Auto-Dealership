@@ -1,8 +1,8 @@
 <%- include('../partials/header') %>
-<a href="/"> back to search</a>
+<a href="/"><span class="material-icons">arrow_back</span>back to search</a>
 <h1><%= title %></h1>
 <% ad.pictures.forEach(pic => { %>
-    <img src="<%= pic %>" width="150">
+    <img src="<%= pic %>" width="200">
 <% }) %>
 <%= ad.milege; %>km
 $<%= ad.price; %>
@@ -12,9 +12,9 @@ $<%= ad.price; %>
 <br>area: <%= ad.contact.postal; %>
 <% if (user) { %>
     <% if (ad.savedBy.includes(user._id)) { %>
-        <br><br>Saved to <a href="/profile/favorite">favorite</a>
+        <br><br>Saved to <a href="/profile/favorite"><span class="material-icons">favorite</span>favorite</a>
     <% } else { %>
-        <br><br><a href="/ads/<%= ad._id %>/save">Save to favorite</a>
+        <br><br><a href="/ads/<%= ad._id %>/save"><span class="material-icons">favorite</span>Save to favorite</a>
     <% } %>
 <% }; %>
 <br><br><%= ad.savedBy.length %> people saved this ad.

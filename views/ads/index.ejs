@@ -32,7 +32,7 @@
         <option value="<%= car.model %>"><%= car.model %></option>
         <% duplicateModels.push(car.model) %> <% } %> <% }) %>
       </select>
-      <a href="ads/reset">reset</a>
+      <a href="ads/reset"><span class="material-icons">restart_alt</span>reset</a>
     </form>
   </div>
 </div>
@@ -40,10 +40,10 @@
 <div class="ads">
   <% ads.forEach(ad => { %>
   <br /><%= ad.title; %><br />
-  <img src="<%= ad.pictures[0] %>" width="150" /><br />
+  <img src="<%= ad.pictures[0] %>" width="200" /><br />
   $<%= ad.price; %><br />
   <%= ad.milege; %>km<br />
-  <a href="/ads/<%= ad._id %>">view</a><br />
+  <a href="/ads/<%= ad._id %>"><span class="material-icons">directions_car</span>view</a><br />
   <% })%>
 </div>
 

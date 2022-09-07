@@ -40,18 +40,18 @@
     </nav>
 
     <main>
-      <a href="/profile/new/back"> back to profile page</a>
+      <a href="/profile/new/back"><span class="material-icons">arrow_back</span>back to profile page</a>
       <h1><%= title %></h1>
       
 <form action="/profile/new" method="GET">
   <label>Pictures:</label>
   <br><input type="text" name="picture" placeholder="enter url">
   <input type="submit" value="add">
-  <a href="/profile/new/resetpictures">reset</a>
+  <a href="/profile/new/resetpictures"><span class="material-icons">restart_alt</span>reset</a>
 </form>
 
 <% pictures.forEach(picture => { %>
-  <img src="<%= picture %>" width="150">
+  <img src="<%= picture %>" width="200">
 <% }) %>
 
 <form action="/profile/new" method="GET">
@@ -71,7 +71,7 @@
         <option value="<%= year %>"><%= year %></option>
       <% }) %>
     </select>
-    <a href="/profile/resetmodel">reset</a>
+    <a href="/profile/resetmodel"><span class="material-icons">restart_alt</span>reset</a>
   <% }%>
   <% if ('year' in search && !('make' in search)) { %>
     <label>Select Model:</label>

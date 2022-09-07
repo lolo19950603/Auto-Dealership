@@ -22,7 +22,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a href="/ads" class="navbar-brand">Autofinder</a>
+        <a href="/ads" class="navbar-brand"><span class="material-icons">directions_car</span>Autofinder</a>
         <div>
           <ul class="nav">
             <% if (user) { %>
@@ -62,13 +62,13 @@
     <% favAds.forEach(ad => { %>
         <div class="ad">
             <% ad.pictures.forEach(pic => { %>
-                <img src="<%= pic %>" width="150">
+                <img src="<%= pic %>" width="200">
             <% }) %>
             <%= ad.title; %>
             <%= ad.milege; %>km
             $<%= ad.price; %>
-            <br><a href="/ads/<%= ad._id %>">view</a>
-             <a href="/ads/<%= ad._id %>/remove">remove</a>
+            <br><a href="/ads/<%= ad._id %>"><span class="material-icons">directions_car</span>view</a>
+             <a href="/ads/<%= ad._id %>/remove"><span class="material-icons">heart_broken</span>remove</a>
         </div>
     <% }) %>
 </div>
