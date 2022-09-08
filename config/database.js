@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/automobile', {
+mongoose.connect(process.env.DATABASE_URL, {
   useUnifiedTopology: true
 });
 
