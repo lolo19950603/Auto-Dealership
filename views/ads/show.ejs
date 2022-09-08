@@ -8,20 +8,21 @@
 <a href="/ads/<%= ad._id %>/save"
   ><span class="material-icons">favorite</span>Save to favorite</a
 >
-<% } %> <% }; %>
-<h1 class="text-light"><%= title %></h1>
-<% ad.pictures.forEach(pic => { %>
-<img src="<%= pic %>" width="200" />
-<% }) %>
-<br /><br />milege: <%= ad.milege; %>km <br />price: $<%= ad.price; %>
-<br />description:<br />$<%= ad.description; %>
+<% } }; %>
+<div class="ads text-light">
+  <h1 class="text-light"><%= title %></h1>
+  <% ad.pictures.forEach(pic => { %>
+  <img src="<%= pic %>" width="200" />
+  <% }) %>
+  <br /><br />milege: <%= ad.milege; %>km <br />price: $<%= ad.price; %>
+  <br />description:<br />$<%= ad.description; %>
 
-<br /><br /><label><h6 class="text-light">Seller Infomation:</h6></label> <br />
-<p>name: <%= ad.contact.name; %></p>
-<br />
-<p>phone: <%= ad.contact.phone; %></p>
-<br />
-<p>area: <%= ad.contact.postal; %></p>
+  <br /><br /><label><h6 class="text-light">Seller Infomation:</h6></label>
+  <br />
+  <p>&ensp;name: <%= ad.contact.name; %></p>
+  <p>&ensp;phone: <%= ad.contact.phone; %></p>
+  <p>&ensp;area: <%= ad.contact.postal; %></p>
 
-<br /><br /><%= ad.savedBy.length %> people saved this ad 
+  <br /><br /><%= ad.savedBy.length %> people saved this ad
+</div>
 <%-include('../partials/footer') %>
