@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Car = require("../models/car");
 const Ad = require("../models/ad");
+const fs = require("fs");
 let search = {};
 
 module.exports = {

@@ -1,110 +1,57 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Autofinder</title>
-    <!-- Google Icon Fonts used by Materialize -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
+<%- include('../partials/header-profile') %>
+<a href="/profile/new/back"
+  ><span class="material-icons">arrow_back</span>back to profile page</a
+>
+<h1 class="text-light"><%= title %></h1>
+<div class="ads text-light">
+  <form action="/profile/<%= ad._id %>" method="POST">
+    <label>Pictures(maximum 5):</label>
+    <br /><input type="text" name="picture1" placeholder="enter url" />
+    <br /><input type="text" name="picture2" placeholder="enter url" />
+    <br /><input type="text" name="picture3" placeholder="enter url" />
+    <br /><input type="text" name="picture4" placeholder="enter url" />
+    <br /><input type="text" name="picture5" placeholder="enter url" />
+    <br /><br /><label>Enter Mileage:</label> <br /><input
+      type="number"
+      name="milege"
+      required="required"
+      value="<%= ad.milege %>"
     />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
+    km
+    <br /><br /><label>Enter Selling Price:</label> <br />$<input
+      type="number"
+      name="price"
+      required="required"
+      value="<%= ad.price %>"
     />
-    <!-- Materialize CSS Framework -->
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <!-- JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-      <div class="container-fluid">
-        <a href="/ads" class="navbar-brand">Autofinder</a>
-        <div>
-          <ul class="nav">
-            <% if (user) { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/profile/new/back"
-                ><span class="material-icons">account_circle</span>Profile</a
-              >
-            </li>
-            <% } else { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/auth/google"
-                ><span class="material-icons">login</span>Sign in with Google</a
-              >
-            </li>
-            <% } %>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <main>
-      <a href="/profile/new/back"
-        ><span class="material-icons">arrow_back</span>back to profile page</a
-      >
-      <h1><%= title %></h1>
-
-      <form action="/profile/<%= ad._id %>" method="POST">
-        <label>Pictures(maximum 5):</label>
-        <br><input type="text" name="picture1" placeholder="enter url">
-        <br><input type="text" name="picture2" placeholder="enter url">
-        <br><input type="text" name="picture3" placeholder="enter url">
-        <br><input type="text" name="picture4" placeholder="enter url">
-        <br><input type="text" name="picture5" placeholder="enter url">
-        <br><br><label>Enter Mileage:</label>
-        <br><input
-          type="number"
-          name="milege"
-          required="required"
-          value="<%= ad.milege %>"
-        />
-        km 
-        <br><br><label>Enter Selling Price:</label>
-        <br>$<input
-          type="number"
-          name="price"
-          required="required"
-          value="<%= ad.price %>"
-        />
-        <br><br><label>Description:</label>
-        <br><textarea
-          name="description"
-          required="required"
-        >
+    <br /><br /><label>Description:</label> <br /><textarea
+      name="description"
+      required="required"
+    >
 <%= ad.description %></textarea
-        >
-        <br><br><label><h6>Contact Information:</h6></label> <br /><label
-          >Name:</label
-        >
-        <br><input
-          type="text"
-          name="name"
-          required="required"
-          value="<%= ad.contact.name %>"
-        />
-        <br><br><label>Phone Number:</label>
-        <br><input
-          type="text"
-          name="phone"
-          required="required"
-          value="<%= ad.contact.phone %>"
-        />
-        <br><br><label>Postal Code:</label>
-        <br><input
-          type="text"
-          name="postal"
-          required="required"
-          value="<%= ad.contact.postal %>"
-        />
-        <br><br><input type="submit" value="Modify" />
-      </form>
-
-      <%- include('../partials/footer') %>
-    </main>
-  </body>
-</html>
+    >
+    <br /><br /><label><h6>Contact Information:</h6></label> <br /><label
+      >Name:</label
+    >
+    <br /><input
+      type="text"
+      name="name"
+      required="required"
+      value="<%= ad.contact.name %>"
+    />
+    <br /><br /><label>Phone Number:</label> <br /><input
+      type="text"
+      name="phone"
+      required="required"
+      value="<%= ad.contact.phone %>"
+    />
+    <br /><br /><label>Postal Code:</label> <br /><input
+      type="text"
+      name="postal"
+      required="required"
+      value="<%= ad.contact.postal %>"
+    />
+    <br /><br /><input type="submit" value="Modify" />
+  </form>
+</div>
+<%- include('../partials/footer') %>
