@@ -25,7 +25,7 @@ function index(req, res, next) {
   const p2 = Ad.find(search);
   Promise.all([p1, p2])
   .then(function(results) {
-    res.render('ads/index', {title: "Welcome to Autofinder!", user: req.user, cars: results[0], ads: results[1], search});
+    res.render('ads/index', {title: "Cars for sale", user: req.user, cars: results[0], ads: results[1], search});
   })
 }
 

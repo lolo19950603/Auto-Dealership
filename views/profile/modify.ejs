@@ -1,16 +1,37 @@
 <%- include('../partials/header-profile') %>
-<a href="/profile/new/back"
-  ><span class="material-icons">arrow_back</span>back to profile page</a
->
-<h1 class="text-light"><%= title %></h1>
-<div class="ads text-light">
+<div class="main text-light">
+  <a href="/profile/new/back"><span class="material-icons">arrow_back</span>back to profile page</a>
+  <br><br>
+  <h4 class="text-light"><%= title %></h4>
+  <br>
   <form action="/profile/<%= ad._id %>" method="POST">
-    <label>Pictures(maximum 5):</label>
-    <br /><input type="text" name="picture1" placeholder="enter url" />
-    <br /><input type="text" name="picture2" placeholder="enter url" />
-    <br /><input type="text" name="picture3" placeholder="enter url" />
-    <br /><input type="text" name="picture4" placeholder="enter url" />
-    <br /><input type="text" name="picture5" placeholder="enter url" />
+    <label>Pictures(maximum 4):</label>
+    <% if(ad.pictures.length === 0) { %>
+      <br /><input type="text" name="picture1" placeholder="enter url"/>
+      <br /><input type="text" name="picture2" placeholder="enter url"/>
+      <br /><input type="text" name="picture3" placeholder="enter url"/>
+      <br /><input type="text" name="picture4" placeholder="enter url"/>
+    <% } else if(ad.pictures.length === 1) { %>
+      <br /><input type="text" name="picture1" placeholder="enter url" value="<%= ad.pictures[0] %>"/>
+      <br /><input type="text" name="picture2" placeholder="enter url"/>
+      <br /><input type="text" name="picture3" placeholder="enter url"/>
+      <br /><input type="text" name="picture4" placeholder="enter url"/>
+    <% }  else if(ad.pictures.length === 2) { %>
+      <br /><input type="text" name="picture1" placeholder="enter url" value="<%= ad.pictures[0] %>"/>
+      <br /><input type="text" name="picture2" placeholder="enter url" value="<%= ad.pictures[1] %>"/>
+      <br /><input type="text" name="picture3" placeholder="enter url"/>
+      <br /><input type="text" name="picture4" placeholder="enter url"/>
+    <% } else if(ad.pictures.length === 3) { %>
+      <br /><input type="text" name="picture1" placeholder="enter url" value="<%= ad.pictures[0] %>"/>
+      <br /><input type="text" name="picture2" placeholder="enter url" value="<%= ad.pictures[1] %>"/>
+      <br /><input type="text" name="picture3" placeholder="enter url" value="<%= ad.pictures[2] %>"/>
+      <br /><input type="text" name="picture4" placeholder="enter url"/>
+    <% } else if(ad.pictures.length === 4) { %>
+      <br /><input type="text" name="picture1" placeholder="enter url" value="<%= ad.pictures[0] %>"/>
+      <br /><input type="text" name="picture2" placeholder="enter url" value="<%= ad.pictures[1] %>"/>
+      <br /><input type="text" name="picture3" placeholder="enter url" value="<%= ad.pictures[2] %>"/>
+      <br /><input type="text" name="picture4" placeholder="enter url" value="<%= ad.pictures[3] %>"/>
+    <% } %>
     <br /><br /><label>Enter Mileage:</label> <br /><input
       type="number"
       name="milege"

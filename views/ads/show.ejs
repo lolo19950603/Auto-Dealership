@@ -1,27 +1,34 @@
 <%- include('../partials/header-main') %>
-<a href="/"><span class="material-icons">arrow_back</span>back to search</a>
-<% if (user) { %> <% if (ad.savedBy.includes(user._id)) { %>
-<a href="/profile/favorite"
-  ><span class="material-icons">favorite</span>saved</a
->
-<% } else { %>
-<a href="/ads/<%= ad._id %>/save"
-  ><span class="material-icons">favorite</span>Save to favorite</a
->
-<% } }; %>
-<div class="ads text-light">
-  <h1 class="text-light"><%= title %></h1>
-  <% ad.pictures.forEach(pic => { %>
-  <img src="<%= pic %>" width="200" />
-  <% }) %>
-  <br /><br />milege: <%= ad.milege; %>km <br />price: $<%= ad.price; %>
-  <br />description:<br />$<%= ad.description; %>
-
-  <br /><br /><label><h6 class="text-light">Seller Infomation:</h6></label>
+<div class="main text-light">
+  <a href="/"><span class="material-icons">arrow_back</span>back to search</a>
+  <% if (user) { %> <% if (ad.savedBy.includes(user._id)) { %>
+  <a href="/profile/favorite"
+    ><span class="material-icons">favorite</span>saved</a
+  >
+  <% } else { %>
+  <a href="/ads/<%= ad._id %>/save"
+    ><span class="material-icons">favorite</span>Save to favorite</a
+  >
+  <% } }; %>
+  <br><br>
+  <div class="collection">
+    <% ad.pictures.forEach(pic => { %>
+      <img class="pic<%= ad.pictures.indexOf(pic) %>" src="<%= pic %>"/>
+      <% }) %>
+  </div>
+  <h5 class="text-light"><%= title %>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span class="bigmoney">$</span><%= ad.price; %><br></h5>
+  <p>
+    &ensp;<b>milege</b>: <%= ad.milege; %> km<br><br>
+    &ensp;<b>description</b>:<br>
+    &ensp;&ensp;<%= ad.description; %><br>
+  </p>
+  <br /><label><h6 class="text-light">Contact:</h6></label>
   <br />
-  <p>&ensp;name: <%= ad.contact.name; %></p>
-  <p>&ensp;phone: <%= ad.contact.phone; %></p>
-  <p>&ensp;area: <%= ad.contact.postal; %></p>
+  <p>
+    &ensp;<b>name</b>: <%= ad.contact.name; %><br>
+    &ensp;<b>phone</b>: <%= ad.contact.phone; %><br>
+    &ensp;<b>area</b>: <%= ad.contact.postal; %><br>
+  </p>
 
   <br /><br /><%= ad.savedBy.length %> people saved this ad
 </div>

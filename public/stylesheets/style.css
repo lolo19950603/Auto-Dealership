@@ -1,15 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Franklin Gothic Medium", sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: #22272e;
+}
+
+p {
+  font-size: 12px;
+}
+
+textarea {
+  width: 400px;
+  height: 250px;
+}
+
+.money {
+  color: gold;
+  font-size: 14px;
+}
+
+.bigmoney {
+  color: gold;
+  font-size: 20px;
 }
 
 .navbar {
   background-color: #2d333b;
 }
 
-.ads {
+.main {
   margin: auto;
   width: 50%;
-  border: 3px solid grey;
   padding: 10px;
+}
+
+.ad {
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.ad-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.collection {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.pic0 {
+  grid-column: span 3;
+  grid-row: span 3;
+  width: 380px;
+}
+
+.pic1, .pic2, .pic3, .pic4 {
+  width: 150px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
 }

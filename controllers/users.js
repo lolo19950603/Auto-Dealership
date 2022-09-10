@@ -79,7 +79,6 @@ function create(req, res) {
     if (req.body.picture5) {
       pictures.push(req.body.picture5);
     }
-    console.log(pictures);
     var newAd = new Ad({
       title: search.year + ' ' + search.make + ' ' + search.model,
       year: search.year,
@@ -97,7 +96,6 @@ function create(req, res) {
       }
     });
     newAd.save();
-    console.log(newAd);
     search = {};
     res.redirect('/profile');
   });
@@ -136,7 +134,6 @@ function modify(req, res, next) {
     if (req.body.picture5) {
       pictures.push(req.body.picture5);
     }
-    console.log(pictures);
     ad.pictures = pictures;
     ad.milege = req.body.milege;
     ad.price = req.body.price;

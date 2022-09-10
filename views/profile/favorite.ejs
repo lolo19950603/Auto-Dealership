@@ -1,20 +1,24 @@
 <%- include('../partials/header-profile') %>
-<div class="ads text-light">
-  <a href="/profile/new/back"
-    ><span class="material-icons">arrow_back</span>back to profile page</a
-  >
-  <h3>Favorite:</h3>
+<div class="main text-light">
+  <a href="/profile/new/back"><span class="material-icons">arrow_back</span>back to profile page</a>
+  <br><br>
+  <h4><%= title %></h4>
   <% favAds.forEach(ad => { %>
-  <div class="ad">
-    <img src="<%= ad.pictures[0] %>" width="200" />
-    <br /><%= ad.title; %> <br /><%= ad.milege; %>km <br />$<%= ad.price; %>
-    <br /><a href="/ads/<%= ad._id %>"
-      ><span class="material-icons">directions_car</span>view</a
-    >
-    <a href="/ads/<%= ad._id %>/remove"
-      ><span class="material-icons">heart_broken</span>remove</a
-    >
-  </div>
+    <br>
+    <div class="ad">
+      <img src="<%= ad.pictures[0] %>" width="200" />
+      <div class="ad-detail">
+        <h6><%= ad.title; %></h6>
+        <p>
+          &ensp;<%= ad.milege; %> km<br>
+          &ensp;<span class="money">$</span><%= ad.price; %>
+        </p>
+        <div class="links">
+          <a href="/ads/<%= ad._id %>"><span class="material-icons">directions_car</span>view</a>
+          <a href="/ads/<%= ad._id %>/remove"><span class="material-icons">heart_broken</span>remove</a>
+        </div>
+      </div>
+    </div>
   <% }) %>
 </div>
 <%- include('../partials/footer') %>
