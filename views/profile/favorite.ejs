@@ -1,14 +1,14 @@
 <%- include('../partials/header-profile') %>
+<a href="/profile/new/back"><span class="material-icons">arrow_back</span>back to profile page</a>
 <div class="main text-light">
-  <a href="/profile/new/back"><span class="material-icons">arrow_back</span>back to profile page</a>
   <br><br>
   <h4><%= title %></h4>
   <% favAds.forEach(ad => { %>
     <br>
     <div class="ad">
-      <img src="<%= ad.pictures[0] %>" width="200" />
+      <img src="<%= ad.pictures[0] %>" width="300" />
       <div class="ad-detail">
-        <h6><%= ad.title; %></h6>
+        <h4><%= ad.title; %></h4>
         <p>
           &ensp;<%= ad.milege; %> km<br>
           &ensp;<span class="money">$</span><%= ad.price; %>

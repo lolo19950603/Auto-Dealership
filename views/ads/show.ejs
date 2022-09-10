@@ -1,7 +1,6 @@
 <%- include('../partials/header-main') %>
-<div class="main text-light">
-  <a href="/"><span class="material-icons">arrow_back</span>back to search</a>
-  <% if (user) { %> <% if (ad.savedBy.includes(user._id)) { %>
+<a href="/"><span class="material-icons">arrow_back</span>back to search</a>
+<% if (user) { %> <% if (ad.savedBy.includes(user._id)) { %>
   <a href="/profile/favorite"
     ><span class="material-icons">favorite</span>saved</a
   >
@@ -10,6 +9,7 @@
     ><span class="material-icons">favorite</span>Save to favorite</a
   >
   <% } }; %>
+<div class="main text-light">
   <br><br>
   <div class="collection">
     <% ad.pictures.forEach(pic => { %>
@@ -17,20 +17,21 @@
       <% }) %>
   </div>
   <br>
-  <h5 class="text-light"><%= title %>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span class="bigmoney">$</span><%= ad.price; %><br></h5>
-  <p>
-    &ensp;<b>milege</b>: <%= ad.milege; %> km<br><br>
-    &ensp;<b>description</b>:<br><br>
-    <%= ad.description; %><br>
-  </p>
-  <br /><label><h6 class="text-light">Contact:</h6></label>
-  <br />
-  <p>
-    &ensp;<b>name</b>: <%= ad.contact.name; %><br>
-    &ensp;<b>phone</b>: <%= ad.contact.phone; %><br>
-    &ensp;<b>area</b>: <%= ad.contact.postal; %><br>
-  </p>
-
-  <br /><br /><%= ad.savedBy.length %> people saved this ad
+  <div class="ad-detail2">
+    <h5 class="text-light"><%= title %>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span class="bigmoney">$</span><%= ad.price; %><br></h5>
+    <p>
+      &ensp;<b>milege</b>: <%= ad.milege; %> km<br><br>
+      &ensp;<b>description</b>:<br><br>
+      <%= ad.description; %><br>
+    </p>
+    <br /><label><h6 class="text-light">Contact:</h6></label>
+    <p>
+      &ensp;<b>name</b>: <%= ad.contact.name; %><br>
+      &ensp;<b>phone</b>: <%= ad.contact.phone; %><br>
+      &ensp;<b>area</b>: <%= ad.contact.postal; %><br>
+    </p>
+  
+    <br /><br /><%= ad.savedBy.length %> people saved this ad
+  </div>
 </div>
 <%-include('../partials/footer') %>

@@ -19,6 +19,14 @@
 
     user is able to save the ads based on his/her interest.
 
+    View
+
+    user is able to view each individual ad for more details like description, contact information, etc.
+
+    Add/Modify
+
+    user is able to create/modify ads by entering car models, picture urls, price, milege, description, etc.
+
 ### Screenshot(s)
 
 <img src="public/images/Screenshot main.jpg" width="220">

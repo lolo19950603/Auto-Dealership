@@ -1,7 +1,7 @@
 <%- include('../partials/header-main') %>
-<h5 class="text-light">&ensp;<%= title %></h5>
+<h4 class="text-light">&ensp;<%= title %></h4>
 <div class="main text-light">
-  <div id="search-row" class="row">
+  <div class="searchbar">
     <form action="/ads" method="GET">
       <select name="year" onchange="this.form.submit()">
         <option value="" disabled selected>
@@ -40,9 +40,9 @@
   <% ads.forEach(ad => { %>
     <br>
     <div class="ad">
-      <img src="<%= ad.pictures[0] %>" width="200" />
+      <img src="<%= ad.pictures[0] %>" width="300" />
       <div class="ad-detail">
-        <h6><%= ad.title; %></h6>
+        <h4><%= ad.title; %></h4>
         <p>
           &ensp;<%= ad.milege; %> km<br>
           &ensp;<span class="money">$</span><%= ad.price; %>
