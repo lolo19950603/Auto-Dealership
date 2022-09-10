@@ -21,7 +21,7 @@
 
     View
 
-    user is able to view each individual ad for more details like description, contact information, etc.
+    user is able to view each individual ad for more details like description, contact information, etc. User is also able to see how many people saved this ad in their favorite.
 
     Add/Modify
 
